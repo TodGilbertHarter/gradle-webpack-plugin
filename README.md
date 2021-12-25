@@ -1,7 +1,7 @@
 Webpack plugin
 ==============
 
-[![Build Status](https://travis-ci.org/tim-group/gradle-webpack-plugin.svg?branch=master)](https://travis-ci.org/tim-group/gradle-webpack-plugin)
+This is a fork I made of the 'gradle-webpack-plugin' because I just needed something simple that I could use with the gradle-node-plugin v3.1.1 (the currently active fork). The upstream version only works with the older pre-fork v2.x of gradle-node-plugin. I've updated this one so it should work with newer tools, including compatibility with Gradle 7.x, and newer versions of Groovy/Spock. It SHOULD also work pretty well on Java 17 :). 
 
 Publishing
 ----------
