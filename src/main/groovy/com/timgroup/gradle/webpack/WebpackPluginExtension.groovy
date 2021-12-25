@@ -1,6 +1,6 @@
 package com.timgroup.gradle.webpack
 
-import com.moowork.gradle.node.NodeExtension
+import com.github.gradle.node.NodeExtension
 import org.gradle.api.Project
 
 class WebpackPluginExtension {

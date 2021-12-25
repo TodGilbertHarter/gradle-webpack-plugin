@@ -1,6 +1,6 @@
 package com.timgroup.gradle.webpack
 
-import com.moowork.gradle.node.NodeExtension
+import com.github.gradle.node.NodeExtension
 import groovy.json.JsonSlurper
 import org.gradle.api.Plugin
 import org.gradle.api.Project

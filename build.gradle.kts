@@ -10,11 +10,11 @@ val repoUrl: String? by project
 val repoUsername: String? by project
 val repoPassword: String? by project
 
-val buildNumber: String? by extra { System.getenv("ORIGINAL_BUILD_NUMBER") ?: System.getenv("BUILD_NUMBER") }
-val githubUrl by extra("https://github.com/tim-group/gradle-webpack-plugin")
+val buildNumber: String? by extra { "0" } // System.getenv("ORIGINAL_BUILD_NUMBER") ?: System.getenv("BUILD_NUMBER") }
+val githubUrl by extra("https://github.com/TodGilbertHarter/gradle-webpack-plugin")
 
 group = "com.timgroup"
-if (buildNumber != null) version = "1.0.$buildNumber"
+if (buildNumber != null) version = "1.1.$buildNumber"
 description = "Build Javascript sources with Webpack and test with Mocha / Jest"
 
 repositories {
@@ -23,18 +23,18 @@ repositories {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     withSourcesJar()
 }
 
 dependencies {
     implementation(gradleApi())
     implementation(localGroovy())
-    implementation("com.github.node-gradle:gradle-node-plugin:2.2.0")
+    implementation("com.github.node-gradle:gradle-node-plugin:3.1.1")
 
     testImplementation("junit:junit:4.13")
-    testImplementation("org.spockframework:spock-core:1.3-groovy-2.5") {
+    testImplementation("org.spockframework:spock-core:2.0-groovy-3.0") {
         exclude(module = "groovy-all")
     }
 }
@@ -48,7 +48,7 @@ tasks {
 gradlePlugin {
     plugins {
         create("webpack") {
-            id = "com.timgroup.webpack"
+            id = "com.giantelectronicbrain.webpack"
             implementationClass = "com.timgroup.gradle.webpack.WebpackPlugin"
             description = project.description
             displayName = "Webpack / Mocha plugin"
@@ -64,7 +64,10 @@ pluginBundle {
 
 publishing {
     repositories {
-        if (project.hasProperty("repoUrl")) {
+    	maven("../localrepo") {
+    		name = "localRepo"
+    	}
+/*        if (project.hasProperty("repoUrl")) {
             maven("$repoUrl/repositories/yd-release-candidates") {
                 name = "timgroup"
                 credentials {
@@ -72,6 +75,6 @@ publishing {
                     password = repoPassword.toString()
                 }
             }
-        }
+        } */
     }
 }

@@ -1,6 +1,6 @@
 package com.timgroup.gradle.webpack
 
-import com.moowork.gradle.node.exec.NodeExecRunner
+import com.github.gradle.node.exec.NodeExecRunner
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.*
 import org.gradle.process.internal.ExecActionFactory
@@ -10,7 +10,7 @@ import java.nio.file.Files
 import java.nio.file.attribute.BasicFileAttributeView
 import java.security.MessageDigest
 
-class WebpackTask extends DefaultTask {
+abstract class WebpackTask extends DefaultTask {
     @InputDirectory
     def sources
     @InputFile

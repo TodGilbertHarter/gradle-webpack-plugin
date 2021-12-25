@@ -1,10 +1,11 @@
 package com.timgroup.gradle.webpack
 
-import com.moowork.gradle.node.NodeExtension
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
 
-class CopyNvmInstallTask extends DefaultTask {
+import com.github.gradle.node.NodeExtension
+
+abstract class CopyNvmInstallTask extends DefaultTask {
     CopyNvmInstallTask() {
         this.group = 'Node'
         this.description = 'Copy Node installation from where NVM downloads them'
